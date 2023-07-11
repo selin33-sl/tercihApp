@@ -14,6 +14,54 @@ import {Checkbox, Header, Modall, Textinput} from '../../components';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+export const data=[
+  {
+
+    id:1,
+    yksEnKucukPuan2021:265.5,
+    yksBasariSira2021:242328,
+    programAdi:'Bilgisayar Müh.',
+    sehir:'Konya',
+    universiteAdi:'Selçuk Üniversite',
+    lisans:'lisans',
+    puanTuru:'TYT',
+    uniTuru:'DEVLET',
+
+  },
+  {
+
+    id:2,
+    yksEnKucukPuan2021:265.5,
+    yksBasariSira2021:242328,
+    sehir:'Konya',
+    programAdi:'Elektrik Elektronik Müh.',
+    universiteAdi:'Selçuk Üniversite',
+    lisans:'lisans',
+    puanTuru:'SAYISAL',
+    uniTuru:'VAKIF',
+
+  },
+  {
+
+    id:3,
+    yksEnKucukPuan2021:265.5,
+    yksBasariSira2021:242328,
+    programAdi:'Makine Müh.',
+    sehir:'Konya',
+    universiteAdi:'Selçuk Üniversite',
+    lisans:'ön lisans',
+    puanTuru:'EA',
+    uniTuru:'KKTC',
+
+  },
+
+
+]
+
+const handleSubmit=()=>{
+ 
+}
+
 export const TercihScreen = () => {
   const [sehir, onChangeSehir] = useState('');
   const [bolum, onChangeBolum] = useState('');
@@ -23,6 +71,7 @@ export const TercihScreen = () => {
   const [isSelected1, setSelection1] = useState(false);
   const [isSelected2, setSelection2] = useState(false);
   const [isSelected3, setSelection3] = useState(false);
+
 
   return (
     <View style={style.container}>
@@ -39,7 +88,7 @@ export const TercihScreen = () => {
             onChangeText={onChangeMaxPuan}
             value={maxpuan}
             width={windowWidth * 0.35}
-            placeholder={'Max Puan'}
+            placeholder={'Başarı sır.'}
           />
         </View>
 
@@ -87,7 +136,7 @@ export const TercihScreen = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             marginHorizontal: '6%',
-            marginBottom: '40%',
+            marginBottom: '20%',
           }}>
           <Modall puan={true} text={'Puan Türü'} />
           <Modall text={'Üniversite Türü'} />
@@ -100,8 +149,9 @@ export const TercihScreen = () => {
             flexDirection: 'row',
           }}>
           <TouchableOpacity
+          onPress={handleSubmit}
             style={{
-              width: windowWidth * 0.5,
+              width: windowWidth * 0.5, 
               height: windowHeight * 0.08,
               padding: 2,
               justifyContent: 'center',

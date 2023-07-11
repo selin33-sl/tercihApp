@@ -6,11 +6,12 @@ import {
 
 import logger from 'redux-logger';
 
-import {universitiesSlice, departmentsSlice} from './slice';
+import {universitiesSlice, departmentsSlice,tercihSlice} from './slice';
 
 const reducer = combineReducers({
   universities: universitiesSlice,
   departments: departmentsSlice,
+  tercih:tercihSlice,
 });
 
 export const store = configureStore({

@@ -15,7 +15,7 @@ export const departmentsSlice = createSlice({
       state.data = undefined;
       state.isLoading = {};
       state.error = undefined;
-      state.status = {};
+      state.status = undefined;
       state.message = {};
     },
   },
@@ -23,12 +23,16 @@ export const departmentsSlice = createSlice({
     [getDepartmentProcess.pending]: state => {
       state.isLoading = {...state.isLoading, getDepartmentProcess: true};
     },
+   
     [getDepartmentProcess.fulfilled]: (state, action) => {
-      state.isLoading = {...state.isLoading, getDepartmentProcess: false};
-      state.data = action.payload;
+      state.isLoading = { ...state.isLoading, getDepartmentProcess: false };
+      state.status = action.payload;
+      state.data = action.payload; // Tüm veriler state.data içine ekleniyor
     },
+    
     [getDepartmentProcess.rejected]: (state, action) => {
       state.isLoading = {...state.isLoading, getDepartmentProcess: false};
+      state.status = action.payload;
       state.error = action.error;
     },
   },

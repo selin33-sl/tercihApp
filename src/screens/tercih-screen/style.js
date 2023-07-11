@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#000E36'},
+  container: {flex: 1, backgroundColor: '#000E36',},
   textInputContainer: {
     flex: 1,
     margin: '5%',

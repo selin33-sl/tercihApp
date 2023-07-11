@@ -10,15 +10,16 @@ import {
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Checkbox} from '../Checkbox';
+import { data } from '../../screens';
 
-const puanTuru = [
-  {id: 1, name: 'Hepsi'},
-  {id: 2, name: 'TYT'},
-  {id: 3, name: 'SAYISAL'},
-  {id: 4, name: 'EŞİT AĞIRLIK'},
-  {id: 5, name: 'SÖZEL'},
-  {id: 6, name: 'DİL'},
-];
+// const puanTuru = [
+//   {id: 1, name: 'Hepsi'},
+//   {id: 2, name: 'TYT'},
+//   {id: 3, name: 'SAYISAL'},
+//   {id: 4, name: 'EŞİT AĞIRLIK'},
+//   {id: 5, name: 'SÖZEL'},
+//   {id: 6, name: 'DİL'},
+// ];
 const universiteTuru = [
   {id: 1, name: 'Hepsi'},
   {id: 2, name: 'DEVLET'},
@@ -95,20 +96,20 @@ export const Modall = ({puan, text}) => {
               </View>
 
               {puan
-                ? puanTuru.map(option => (
+                ? data.map(option => (
                     <Checkbox
                       key={option.id}
                       value={tempSelectedOptions.includes(option.name)}
                       onValueChange={() => handleOptionToggle(option.name)}
-                      label={option.name}
+                      label={option.puanTuru}
                     />
                   ))
-                : universiteTuru.map(option => (
+                : data.map(option => (
                     <Checkbox
                       key={option.id}
                       value={tempSelectedOptions.includes(option.name)}
                       onValueChange={() => handleOptionToggle(option.name)}
-                      label={option.name}
+                      label={option.uniTuru}
                     />
                   ))}
 

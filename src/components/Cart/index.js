@@ -6,17 +6,34 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React ,{useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import { getDepartmentProcess } from '../../api';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export const Cart = ({text1, text2, id}) => {
+export const Cart = ({item,id}) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const {data, status} = useSelector(
+    state => state.departments,
+  );
+
+  useEffect(() => {
+    status === 'success' &&
+      navigation.navigate('universitydetail-screen', {item: data, id: id});
+      // console.log(item,"555555555555555555555555");
+    //  console.log(id,"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+  }, [status]);
 
   const handleItemPress = () => {
-    navigation.navigate('universitydetail-screen', {id: id});
+    dispatch(getDepartmentProcess({id: item._id}));
+    console.log(id,"fffffffffffffffffffffffffffffffffffffffffff");
+    console.log(item,"şşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşş");
+    navigation.navigate('universitydetail-screen', {item });
   };
 
   return (
@@ -40,10 +57,10 @@ export const Cart = ({text1, text2, id}) => {
           fontWeight: 'bold',
           marginBottom: '2%',
         }}>
-        {text1}
+        {item.uniAdi}
       </Text>
       <Text style={{color: '#000E36', fontSize: 18, fontStyle: 'italic'}}>
-        {text2}
+        {item.sehir}
       </Text>
     </TouchableOpacity>
   );

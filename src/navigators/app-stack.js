@@ -1,38 +1,24 @@
-import {SafeAreaView, StatusBar} from 'react-native';
-import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TercihStack } from './tercih-stack';
+import { UniversitiesStack } from './universities-stack';
+import {NavigationContainer} from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+const Tab = createBottomTabNavigator();
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {
-  HomeScreen,
-  TercihScreen,
-  UniversitiesScreen,
-  UniversityDetail,
-} from '../screens';
-import Example from '../screens/deneme';
-
-export const AppStack = () => {
-  const Stack = createNativeStackNavigator();
-
+export const AppStack=()=> {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{headerShown: false}}
-          initialRouteName="universities-screen">
-          <Stack.Screen name="home-screen" component={HomeScreen} />
-          <Stack.Screen name="example" component={Example} />
-          <Stack.Screen name="tercih-screen" component={TercihScreen} />
-          <Stack.Screen
-            name="universities-screen"
-            component={UniversitiesScreen}
-          />
-          <Stack.Screen
-            name="universitydetail-screen"
-            component={UniversityDetail}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+   <NavigationContainer >
+     <Tab.Navigator screenOptions={{headerShown: false,tabBarActiveBackgroundColor:'#DCE5FF',tabBarStyle:{
+borderRadius:30
+     }}}   >
+      <Tab.Screen name="tercih-stack" component={TercihStack} options={{title:'Tercih Robotu',tabBarIcon: () => (
+            <Icon name="robot-outline" color={'purple'} size={30} />
+          ),}} />
+      <Tab.Screen name="universities-stack" component={UniversitiesStack} options={{title:'Üniversiteler',tabBarIcon: () => (
+            <Icon name="home-city" color={'purple'} size={30} />
+          )
+        }}/>
+    </Tab.Navigator>
+   </NavigationContainer>
   );
-};
+}

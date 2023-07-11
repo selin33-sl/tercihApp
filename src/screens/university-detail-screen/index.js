@@ -10,7 +10,7 @@ import {useRoute} from '@react-navigation/native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export const bolumler = [
+ const bolumler = [
   {
     id: 1,
     name: 'Bilgisayar Mühendisliği',
@@ -39,17 +39,25 @@ export const bolumler = [
 ];
 
 export const UniversityDetail = () => {
-  // Find the item with the matching ID from your data array
-  // const selectedItem = data.find(item => item.id === itemId);
+  
   const route = useRoute();
-  const {id} = route.params;
-  const dispatch = useDispatch();
-  const {data} = useSelector(state => state.departments);
-  console.log(data, 'dataaaaaaaaaaa');
 
-  useEffect(() => {
-    dispatch(getDepartmentProcess(id));
-  }, []);
+ 
+  const {item} = route.params;
+
+
+  const dispatch = useDispatch();
+  //  const {data,status} = useSelector(state => state.departments);
+  // console.log(data, 'detayyyyyyyyyyyyyyyyyyyyyyyyyy');
+  // console.log(id,"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+  console.log(item,"itemmmmmmmmmmmmmmmmmmmmmmmdjfkjfkljsdlkfj");
+  console.log(item.uniAdi,"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+ 
+  //  useEffect(() => {
+  //    dispatch(getDepartmentProcess({id}));
+  // }, []);
+
+  // console.log(data.length(),"üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü");
 
   // const renderItem = ({item}) => <Cart text1={item.uniAdi} id={item._id} />;
 
@@ -62,41 +70,40 @@ export const UniversityDetail = () => {
             width: windowWidth * 0.96,
             height: windowHeight * 0.4,
             marginHorizontal: '2%',
-            marginVertical: '5%',
+            marginVertical: '1%',
             borderRadius: 30,
-            padding: '5%',
             justifyContent: 'center',
-            paddingHorizontal: '8%',
+            paddingHorizontal: '5%',
             borderWidth: 1,
             borderColor: '#00D1FF',
           }}>
-          {/* <Veri
-            text={data.uniAdi}
+          <Veri
+            text={item.uniAdi}
             iconName={'home-city'}
             fontWeight={'bold'}
             fontSize={20}
           />
           <Veri
-            text={data.sehir}
+            text={item.sehir}
             iconName={'map-marker-radius-outline'}
             fontSize={18}
           />
-          <Veri text={data.uniTur} iconName={'grain'} fontSize={20} />
+          <Veri text={item.uniTur} iconName={'grain'} fontSize={20} />
           <Veri
-            text={data.kurulusYili}
+            text={item.kurulusYili}
             iconName={'calendar-month'}
             fontSize={18}
           />
-          <Veri text={data.webAdresi} iconName={'web'} fontSize={18} />
-          <Veri text={data.eposta} iconName={'email-outline'} fontSize={18} />
-          <Veri text={data.telefon} iconName={'phone-in-talk'} fontSize={18} />
-          <Veri text={data.fax} iconName={'fax'} fontSize={18} />
+          <Veri text={item.webAdresi} iconName={'web'} fontSize={18} />
+          <Veri text={item.eposta} iconName={'email-outline'} fontSize={18} />
+          <Veri text={item.telefon} iconName={'phone-in-talk'} fontSize={18} />
+          <Veri text={item.fax} iconName={'fax'} fontSize={18} />
           <Veri
-            text={data.adres}
+            text={item.adres}
             iconName={'map-marker-radius-outline'}
             fontSize={16}
           />
-          <Veri text={data.rektorAdi} iconName={'account'} fontSize={20} /> */}
+          <Veri text={item.rektorAdi} iconName={'account'} fontSize={20} />
         </View>
 
         <View style={{flex: 1, marginBottom: '1%', paddingHorizontal: '5%'}}>
@@ -112,7 +119,7 @@ export const UniversityDetail = () => {
           {/* <FlatList
             scrollEnabled={false}
             showsVerticalScrollIndicator={false}
-            data={bolumler}
+            data={bolumler},
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}
           /> */}
@@ -133,6 +140,7 @@ const Veri = ({text, iconName, fontWeight, fontSize}) => {
       />
       <Text
         style={{
+          width:windowWidth*0.8,
           fontSize: fontSize,
           fontWeight: fontWeight,
           color: 'white',
